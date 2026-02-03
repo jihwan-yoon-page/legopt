@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="LEGO: Latent‑space Exploration for Geometry‑aware Optimization of Humanoid Kinematic Design">
+  <meta name="keywords" content="LEGO, Humanoid, Kinematic Design, Optimization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://unpkg.com/img-comparison-slider@7/dist/index.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/img-comparison-slider@7/dist/styles.css" />
+  <title>LEGO: Latent‑space Exploration for Geometry‑aware Optimization of Humanoid Kinematic Design</title>
+  <style>
+    /* 슬라이더 크기 조절 및 중앙 정렬을 위한 스타일 */
+    .comparison-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    img-comparison-slider {
+      --divider-width: 4px;
+      --divider-color: #ffd500;
+      /* 레고 느낌의 노란색으로 포인트 */
+      --default-handle-opacity: 0.8;
+      outline: none;
+      border-radius: 8px;
+    }
+  </style>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/lego_icon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">LEGO: Latent‑space Exploration for Geometry‑aware Optimization of
+              Humanoid Kinematic Design</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://jihwan-yoon-page.github.io/">JiHwan Yoon</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://steadfast-helicona-c82.notion.site/Taemoon-Jeong-69e977daa86b450cb8fa6676c1d287e0">Taemoon
+                  Jeong</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://jeongeun-park-page.github.io/">Jeongeun Park</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://chanwookim971024.github.io/">Chanwoo Kim</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="#">Jaewoon Kwon</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.gabe-yhlee.com/">Yonghyeon Lee</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://sites.google.com/view/railab/professor">Kyungjae Lee</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://sites.google.com/view/sungjoon-choi/personal">Sungjoon Choi</a><sup>1</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Korea University</span>,
+              <span class="author-block"><sup>2</sup>Contoro Robotics</span>,
+              <span class="author-block"><sup>3</sup>MIT</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper (ICRA 2026 Accepted)</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-light" style="cursor: default;">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv (Coming Soon)</span>
+                  </span>
+                </span>
+
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-light" style="cursor: default;">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (TBD)</span>
+                  </span>
+                </span>
+
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-light" style="cursor: default;">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data (TBD)</span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="publication-video">
+            <iframe src="./static/images/Supplementary_Video.mp4" frameborder="0" allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </div>
+          <!-- <div class="has-text-centered">
+            <img src="./static/images/overview_pipeline.png" alt="Overview Pipeline"
+              style="width: 100%; border-radius: 5px;">
+          </div> -->
+          <div class="content has-text-justified" style="margin-top: 1.5rem;">
+            <p>
+              Designing robot morphologies and kinematics has traditionally relied on human intuition, with little
+              systematic foundation. Motion–design co-optimization offers a promising path toward automation, but two
+              major challenges remain:
+              <strong>(i) the vast, unstructured design space</strong> and
+              <strong>(ii) the difficulty of constructing task-specific loss functions</strong>.
+            </p>
+            <p>
+              We propose a new paradigm that minimizes human involvement by:
+            </p>
+            <div class="columns is-centered">
+              <div class="column is-11">
+                <div class="notification is-light">
+                  <ul>
+                    <li style="margin-bottom: 0.5em;">
+                      <span class="icon is-small" style="margin-right: 0.5em; color: #3273dc;"><i
+                          class="fas fa-search"></i></span>
+                      <strong>Learning the design search space</strong> from existing mechanical designs, rather than
+                      hand-crafting it.
+                    </li>
+                    <li>
+                      <span class="icon is-small" style="margin-right: 0.5em; color: #3273dc;"><i
+                          class="fas fa-walking"></i></span>
+                      <strong>Defining the loss directly from human motion data</strong> via motion retargeting and
+                      Procrustes analysis.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <p>
+              Using <strong>screw-theory-based joint axis representation</strong> and <strong>isometric manifold
+                learning</strong>, we
+              construct a compact,
+              geometry-preserving latent space of robot designs in which optimization is tractable.
+              We then solve design optimization in this latent space using gradient-free optimization.
+              Our approach establishes a principled framework for data-driven robot design and demonstrates that
+              leveraging existing designs and human motion can effectively guide the automated discovery of novel robot
+              design.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Screw Theory Based Representation</h2>
+      <div class="content has-text-justified">
+        <p>Our framework models each joint as a 6D vector S=(ω,q) , where ω is the unit axis and q is the global
+          position , enabling a unified and globally consistent description of diverse humanoid morphologies that
+          preserves explicit positional information for motion retargeting.</p>
+      </div>
+
+      <style>
+        /* 1. 박스 크기를 강제로 통일시키는 클래스 */
+        .fixed-slider-box {
+          width: 100%;
+          height: 250px;
+          /* 높이를 250px로 고정 (원하는 대로 조절 가능) */
+          overflow: hidden;
+          /* 튀어나온 이미지 자르기 */
+          border-radius: 4px;
+          background-color: #ffffff;
+          /* 빈 공간 배경색 */
+
+          /* 내부 요소를 정중앙에 배치 */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+          /* 박스 자체를 부모 가운데로 정렬 */
+        }
+
+        /* 2. 슬라이더가 박스 안에서 꽉 차거나 중앙에 오도록 설정 */
+        .fixed-slider-box img-comparison-slider {
+          width: 100%;
+          outline: none;
+        }
+
+        /* 3. 캡션 스타일: 위쪽 여백만 살짝 줌 */
+        .caption-text {
+          margin-top: 10px;
+          font-weight: 600;
+          /* 글씨 약간 굵게 (선택사항) */
+        }
+      </style>
+
+      <div class="columns is-centered">
+
+        <div class="column is-one-third has-text-centered">
+
+          <div class="fixed-slider-box">
+            <img-comparison-slider>
+              <img slot="first" src="./static/images/g1_render_wo_rep.png" width="100%"
+                style="transform: scale(2.0); transform-origin: center center;filter: brightness(1.2);" />
+              <img slot="second" src="./static/images/g1_render.png" width="100%"
+                style="transform: scale(2.0); transform-origin: center center;filter: brightness(1.2);" />
+            </img-comparison-slider>
+          </div>
+
+          <p class="caption-text">g1</p>
+        </div>
+
+        <div class="column is-one-third has-text-centered">
+
+          <div class="fixed-slider-box">
+            <img-comparison-slider>
+              <img slot="first" src="./static/images/hrp4_render_wo_rep.png" width="100%"
+                style="transform: scale(2.0); transform-origin: center center;filter: brightness(1.2);" />
+              <img slot="second" src="./static/images/hrp4_render.png" width="100%"
+                style="transform: scale(2.0); transform-origin: center center;filter: brightness(1.2);" />
+            </img-comparison-slider>
+          </div>
+
+          <p class="caption-text">hrp4</p>
+        </div>
+
+        <div class="column is-one-third has-text-centered">
+
+          <div class="fixed-slider-box">
+            <img-comparison-slider>
+              <img slot="first" src="./static/images/igus_op_render_wo_rep.png" width="100%"
+                style="transform: scale(2.5); transform-origin: center center;filter: brightness(1.2);" />
+              <img slot="second" src="./static/images/igus_op_render.png" width="100%"
+                style="transform: scale(2.5); transform-origin: center center;filter: brightness(1.2);" />
+            </img-comparison-slider>
+          </div>
+
+          <p class="caption-text">igus_op</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Interactive Viewer Section -->
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Latent Space Optimization</h2>
+      <p class="has-text-centered" style="margin-bottom: 2rem;">
+        Explore and manipulate the generated robot models by our method.
+      </p>
+      <div class="viewer-display" id="viewer-display-area"
+        style="height: 900px; width: 100%; overflow: hidden; border-radius: 8px;">
+        <iframe src="https://endeavoringyoon-lego.hf.space/?embed=true"
+          style="width: 100%; height: 100%; border: none; overflow: hidden;" scrolling="no" title="LEGO Streamlit App"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-downloads"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{yoon2026LEGO, 
+  title={LEGO: Latent‑space Exploration for Geometry‑aware Optimization of Humanoid Kinematic Design}, 
+  author={JiHwan Yoon, Taemoon Jeong, Jeongeun Park, Chanwoo Kim, 
+    Jaewoon Kwon, Yonghyeon Lee, Kyungjae Lee, Sungjoon Choi}, 
+  journal={arxiv(will be uploaded)}, 
+  year={2026} 
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="#" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                code</a> of this website,
+              we just ask that you link back to this page in the footer.
+              Please remember to remove the analytics code included in the header of the website which
+              you do not want on your website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
