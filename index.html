@@ -154,7 +154,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="publication-video">
-            <iframe src="./static/images/Supplementary_Video.mp4" frameborder="0" allow="autoplay; encrypted-media"
+            <iframe src="./static/videos/Supplementary_Video.mp4" frameborder="0" allow="autoplay; encrypted-media"
               allowfullscreen></iframe>
           </div>
           <!-- <div class="has-text-centered">
@@ -316,6 +316,86 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Hardware Prototype</h2>
+      <p class="has-text-centered" style="margin-bottom: 2rem;">
+        Real-world experiments with optimized robot designs.
+      </p>
+    </div>
+    <div class="video-grid">
+
+      <div class="video-overlay-container">
+          <video class="main-video" src="./static/videos/easy_0.5x_robot.mp4" 
+                data-start="3.73" data-end="8.730" 
+                muted autoplay playsinline></video>
+          <video class="sub-video" src="./static/videos/easy_0.5x.mp4" 
+                data-start="0" data-end="4.8"
+                muted playsinline></video>
+      </div>
+
+      <div class="video-overlay-container">
+          <video class="main-video" src="./static/videos/middle_0.5x_robot.mp4" 
+                data-start="10.5" data-end="25.434" 
+                muted autoplay playsinline></video>
+          <video class="sub-video" src="./static/videos/middle_0.5x.mp4" 
+                data-start="0" data-end="25.434"
+                muted playsinline></video>
+      </div>
+
+      <div class="video-overlay-container">
+          <video class="main-video" src="./static/videos/hard_0.5x_robot.mp4" 
+                data-start="0" data-end="12.767" 
+                muted autoplay playsinline></video>
+          <video class="sub-video" src="./static/videos/hard_0.5x.mp4" 
+                data-start="0" data-end="12.767"
+                muted playsinline></video>
+      </div>
+
+    </div>
+
+    <style>
+        /* 3개를 가로로 배치하는 그리드 레이아웃 */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 1줄에 3개 */
+            gap: 20px; /* 사이 간격 */
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        /* (반응형) 화면 좁으면 세로로 배치 */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 기존 오버레이 스타일 (그대로 유지) */
+        .video-overlay-container {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden; /* 둥근 모서리 밖으로 영상 튀어나감 방지 */
+        }
+
+        .main-video {
+            width: 100%;
+            display: block;
+        }
+
+        .sub-video {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 35%; /* 크기 조절 */
+            border: 2px solid white;
+            border-radius: 4px;
+            z-index: 10;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+    </style>
+  </section>
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
@@ -360,5 +440,75 @@
   </footer>
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const containers = document.querySelectorAll('.video-overlay-container');
 
+        containers.forEach(container => {
+            const mainVid = container.querySelector('.main-video');
+            const subVid = container.querySelector('.sub-video');
+
+            // 1. HTML 태그에서 설정값 가져오기
+            // 메인 비디오 설정
+            const mainStart = parseFloat(mainVid.dataset.start) || 0;
+            const mainEnd = parseFloat(mainVid.dataset.end) || mainVid.duration;
+            
+            // 서브 비디오 설정 (얘는 시작점만 알면 됩니다)
+            const subStart = parseFloat(subVid.dataset.start) || 0;
+
+            // 2. 비디오 초기화 함수
+            const resetVideos = () => {
+                mainVid.currentTime = mainStart;
+                subVid.currentTime = subStart;
+                
+                // Promise 에러 방지를 위한 안전한 재생
+                const playPromise = mainVid.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        subVid.play();
+                    }).catch(error => {
+                        console.log("Auto-play prevented:", error);
+                    });
+                }
+            };
+
+            // 3. 메타데이터 로드되면 시작 지점으로 점프
+            mainVid.addEventListener('loadedmetadata', resetVideos);
+
+            // 4. [핵심] 시간 감시 및 동기화 로직
+            mainVid.addEventListener('timeupdate', () => {
+                
+                // (A) 끝나는 시간 체크 (무한 루프 구현)
+                if (mainVid.currentTime >= mainEnd) {
+                    resetVideos();
+                    return;
+                }
+
+                // (B) 시간 차이(Offset) 계산하여 서브 비디오 싱크 맞추기
+                // 공식: 서브현재시간 = 서브시작점 + (메인현재시간 - 메인시작점)
+                const elapsed = mainVid.currentTime - mainStart; // 메인이 얼마나 진행됐는지
+                const targetSubTime = subStart + elapsed;        // 그걸 서브 시작점에 더함
+
+                // (C) 드리프트 방지: 오차가 0.2초 이상 벌어질 때만 강제로 맞춤
+                // (매 프레임 맞추면 영상이 떨릴 수 있어서 오차가 클 때만 보정)
+                if (Math.abs(subVid.currentTime - targetSubTime) > 0.2) {
+                    subVid.currentTime = targetSubTime;
+                }
+            });
+
+            // 5. 기타 동기화 (재생/일시정지)
+            mainVid.addEventListener('play', () => subVid.play());
+            mainVid.addEventListener('pause', () => subVid.pause());
+            
+            // 드래그(탐색) 했을 때도 싱크 맞추기
+            mainVid.addEventListener('seeking', () => {
+                const elapsed = mainVid.currentTime - mainStart;
+                subVid.currentTime = subStart + elapsed;
+            });
+            
+            // 초기 설정: 서브 영상 소리 끄기
+            subVid.muted = true;
+        });
+    });
+</script>
 </html>
