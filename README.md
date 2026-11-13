@@ -2,13 +2,18 @@
 
 This is the repository that contains source code for the [LEGO website](https://jihwan-yoon-page.github.io/legopt).
 
+Code: https://github.com/EndeavoringYoon/LEGO
+
 If you find LEGO useful for your work please cite:
 ```
-@article{yoon2026lego,
-  author    = {JiHwan Yoon, Taemoon Jeong, Jeongeun Park, Chanwoo Kim, Jaewoon Kwon, Yonghyeon Lee, Kyungjae Lee, Sungjoon Choi},
+@inproceedings{yoon2026lego,
   title     = {LEGO: Latent-space Exploration for Geometry-aware Optimization of Humanoid Kinematic Design},
-  journal   = {IEEE International Conference on Robotics and Automation (ICRA)},
-  year      = {2026(accepted)},
+  author    = {Yoon, Jihwan and Jeong, Taemoon and Park, Jeongeun and Kim, Chanwoo and Kwon, Jaewoon and
+               Lee, Yonghyeon and Lee, Kyungjae and Choi, Sungjoon},
+  booktitle = {2026 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages     = {6129--6136},
+  year      = {2026},
+  doi       = {10.1109/ICRA57385.2026.11696066}
 }
 ```
 
